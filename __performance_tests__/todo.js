@@ -2,7 +2,7 @@
 
 import {measure} from "./measure"
 import produce, {setAutoFreeze, setUseProxies} from "../dist/immer.umd.js"
-import cloneDeep from "lodash.clonedeep"
+import {cloneDeep} from "lodash"
 import {List, Record} from "immutable"
 import Seamless from "seamless-immutable"
 import deepFreeze from "deep-freeze"

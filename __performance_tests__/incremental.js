@@ -1,7 +1,7 @@
 "use strict"
 import {measure} from "./measure"
 import produce, {setAutoFreeze, setUseProxies} from "../dist/immer.umd.js"
-import cloneDeep from "lodash.clonedeep"
+import {cloneDeep} from "lodash"
 import * as Immutable from "immutable"
 
 console.log("\n# incremental - lot of small incremental changes\n")

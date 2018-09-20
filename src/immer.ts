@@ -16,7 +16,7 @@ import {produceEs5} from "./es5"
  * @param {Function} patchListener - optional function that will be called with all the patches produced here
  * @returns {any} a new state, or the base state if nothing was modified
  */
-export function produce(baseState, producer?, patchListener?) {
+export function produce<State>(baseState, producer?, patchListener?) {
     // prettier-ignore
     if (arguments.length < 1 || arguments.length > 3) throw new Error("produce expects 1 to 3 arguments, got " + arguments.length)
 
@@ -77,3 +77,9 @@ export default produce
 export const applyPatches = produce(applyPatchesImpl)
 
 export const nothing = NOTHING
+
+export interface Patch {
+    op: "replace" | "remove" | "add"
+    path: (string | number)[]
+    value?: any
+}
