@@ -8,7 +8,7 @@ import typescript from "rollup-plugin-typescript"
 
 function getConfig(dest, format, ugly) {
     const conf = {
-        input: "src/immer.js",
+        input: "src/immer.ts",
         output: {
             exports: "named",
             file: dest,

@@ -2,7 +2,7 @@
   "name": "immer",
   "version": "1.7.1",
   "description": "Create your next immutable state by mutating the current one",
-  "main": "dist/immer.js",
+  "main": "dist/immer.ts",
   "umd:main": "dist/immer.umd.js",
   "module": "dist/immer.module.js",
   "jsnext:main": "dist/immer.module.js",
@@ -40,6 +40,8 @@
   ],
   "devDependencies": {
     "@types/jest": "^22.2.3",
+    "@types/lodash": "^4.14.116",
+    "@types/lodash.clonedeep": "^4.5.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.4",
