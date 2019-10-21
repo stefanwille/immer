@@ -4,10 +4,11 @@ import filesize from "rollup-plugin-filesize"
 import resolve from "rollup-plugin-node-resolve"
 import uglify from "rollup-plugin-uglify"
 import babel from "rollup-plugin-babel"
+import typescript from "rollup-plugin-typescript"
 
 function getConfig(dest, format, ugly) {
     const conf = {
-        input: "src/immer.js",
+        input: "src/immer.ts",
         output: {
             exports: "named",
             file: dest,
@@ -16,6 +17,7 @@ function getConfig(dest, format, ugly) {
             sourcemap: true
         },
         plugins: [
+            typescript(),
             resolve({
                 jsnext: true
             }),

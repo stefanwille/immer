@@ -98,7 +98,7 @@ export function has(thing, prop) {
 }
 
 // given a base object, returns it if unmodified, or return the changed cloned if modified
-export function finalize(base, path, patches, inversePatches) {
+export function finalize(base, path?, patches?, inversePatches?) {
     if (isProxy(base)) {
         const state = base[PROXY_STATE]
         if (state.modified === true) {

@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
-    "module": "commonjs"
+    "module": "commonjs",
+    "lib": [
+      "ES6"
+    ]
   }
 }

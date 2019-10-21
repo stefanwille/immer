@@ -236,6 +236,8 @@ export function produceEs5(baseState, producer, patchListener) {
     }
 }
 
+const hasOwnProperty = Object.prototype.hasOwnProperty
+
 function shallowEqual(objA, objB) {
     //From: https://github.com/facebook/fbjs/blob/c69904a511b900266935168223063dd8772dfc40/packages/fbjs/src/core/shallowEqual.js
     if (is(objA, objB)) return true

@@ -1,7 +1,7 @@
 "use strict"
 import produce, {setAutoFreeze, setUseProxies, nothing} from "../src/immer"
-import deepFreeze from "deep-freeze"
-import cloneDeep from "lodash.clonedeep"
+import deepFreeze from "deep-freeze-es6"
+import {cloneDeep} from "lodash"
 import * as lodash from "lodash"
 
 jest.setTimeout(1000)
@@ -13,7 +13,7 @@ runBaseTest("es5 (no freeze)", false, false)
 runBaseTest("es5 (autofreeze)", false, true)
 runBaseTest("es5 (autofreeze)(patch listener)", false, true, true)
 
-function runBaseTest(name, useProxies, freeze, useListener) {
+function runBaseTest(name, useProxies, freeze, useListener = false) {
     describe(`base functionality - ${name}`, () => {
         let baseState
         let origBaseState
@@ -509,7 +509,7 @@ function runBaseTest(name, useProxies, freeze, useListener) {
                     expect(1 in draft).toBe(false)
                     expect("0" in draft).toBe(true)
                     expect("1" in draft).toBe(false)
-                    expect(length in draft).toBe(true)
+                    expect("length" in draft).toBe(true)
                     expect(
                         Reflect.ownKeys(draft).filter(
                             x => typeof x === "string"
@@ -563,7 +563,7 @@ function runBaseTest(name, useProxies, freeze, useListener) {
                         draft => {
                             Object.defineProperty(draft, "xx", {
                                 enumerable: true,
-                                writeable: true,
+                                writable: true,
                                 value: 2
                             })
                         },
@@ -584,7 +584,7 @@ function runBaseTest(name, useProxies, freeze, useListener) {
 
             it("should not be possible to remove properties from arrays", () => {
                 expect(() => {
-                    const base = []
+                    const base: any = []
                     base.x = 7
                     produce(base, d => {
                         delete d.x
@@ -596,7 +596,7 @@ function runBaseTest(name, useProxies, freeze, useListener) {
         }
 
         it("non-numeric array properties will be lost", () => {
-            const base = []
+            const base: any = []
             base.x = 7
             const next = produce(base, d => {
                 d.push(3)
